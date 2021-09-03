@@ -3,13 +3,13 @@
 Export files free for use as templates for Simply Schedule Appointments. 
 
 Basic Edition:
-- Dog Walker
-- Hair Stylist
-- Blank
+- Dog Walker (dog-walker-export.txt)
+- Hair Stylist (hair-stylist-export.txt)
+- Blank (blank-template.txt)
 
 Plus Edition:
-- DMV Appointment Scheduling
-- Therapist Consultation
+- DMV Appointment Scheduling (dmv-export.txt)
+- Therapist Consultation (therapist-export.txt)
 
 Professional Edition: 
 - Photography Studio Session
