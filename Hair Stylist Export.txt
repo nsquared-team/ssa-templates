@@ -1,0 +1,2909 @@
+{
+  "settings": {
+    "capacity": {
+      "enabled": true,
+      "schema_version": "2020-04-28"
+    },
+    "installed": {
+      "schema_version": "2020-09-14",
+      "blackout_dates": true,
+      "advanced_scheduling": true,
+      "capacity": true,
+      "developer": true,
+      "google_calendar": true,
+      "license": true,
+      "mailchimp": true,
+      "notifications": true,
+      "offline_payments": true,
+      "payments": true,
+      "paypal": true,
+      "reminders": true,
+      "sms": true,
+      "staff": true,
+      "stripe": true,
+      "styles": true,
+      "tracking": true,
+      "translation": true,
+      "webhooks": true,
+      "woocommerce": true,
+      "zoom": true
+    },
+    "global": {
+      "enabled": false,
+      "wizard_completed": "2021-08-20 00:16:48",
+      "timezone_string": "UTC",
+      "country_code": "",
+      "start_of_week": "1",
+      "date_format": "F j, Y",
+      "time_format": "g:i a",
+      "admin_email": "your@email.com",
+      "admin_phone": false,
+      "staff_name": "admin",
+      "company_name": "Hair Stylist",
+      "last_updated": "2021-08-30 20:09:13",
+      "booking_post_id": "",
+      "schema_version": "2021-03-23",
+      "date_format_moment": "MMMM D, YYYY",
+      "time_format_moment": "h:mm a",
+      "booking_post_permalink": false,
+      "locale": "en_US"
+    },
+    "notifications": {
+      "enabled": true,
+      "notifications": [
+        {
+          "appointment_types": [],
+          "id": 1629418601,
+          "schema": "2019-04-02",
+          "sent_to": [
+            "{{admin_email}}"
+          ],
+          "title": "Email (Admin)",
+          "subject": "{{ Appointment.customer_information.Name }} just booked an appointment",
+          "message": "<p>{{ Appointment.customer_information.Name }} just booked an appointment on {{ Global.home_url }} </p>\n<p>Appointment Details: <br />\nStarting at {{ Appointment.start_date | date(\"F d, Y g:ia (T)\", Appointment.date_timezone) }} </p>\n<p>{% if instructions %}<br />\nInstructions: {{ instructions|raw }} <br />\n{% endif %}</p>\n<p>{% if Appointment.web_meeting_url %}<br />\nAt your appointment time, join the meeting using this link: {{ Appointment.web_meeting_url }}{% endif %}</p>\n<p>Type: {{ Appointment.AppointmentType.title|raw }} </p>\n<p>Customer details: <br />\n{{ Appointment.customer_information_summary }}</p>\n",
+          "trigger": "appointment_booked",
+          "type": "email",
+          "when": "after",
+          "duration": 0
+        },
+        {
+          "appointment_types": [],
+          "id": 1629418602,
+          "schema": "2019-04-02",
+          "sent_to": [
+            "{{customer_email}}"
+          ],
+          "subject": "Your appointment details",
+          "message": "<p>Hi {{ Appointment.customer_information.Name }}!</p><p><br></p><p>This is a confirmation of the appointment you just booked on {{ Global.site_url }}</p><p><br></p><p>Appointment scheduled for {{ Appointment.start_date | date(\"F d, Y g:ia (T)\", Appointment.customer_timezone) }}</p><p><br></p><p>{% if instructions %}</p><p>Instructions: {{ instructions|raw }}</p><p>{% endif %}</p><p><br></p><p>{% if Appointment.web_meeting_url %}</p><p>At your appointment time, join the meeting using this link: {{ Appointment.web_meeting_url }}{% endif %}</p><p><br></p><p>Type: {{ Appointment.AppointmentType.title|raw }}</p><p><br></p><p>Your details:</p><p>{{ Appointment.customer_information_summary }}</p><p><br></p><p>If you need to cancel or change your appointment, you can do so by visiting this link:</p><p>{{ Appointment.public_edit_url }}</p>\n",
+          "title": "Email (Customer)",
+          "trigger": "appointment_booked",
+          "type": "email",
+          "when": "after",
+          "duration": 0,
+          "last_modified": "2021-08-23 23:42:10"
+        },
+        {
+          "appointment_types": [],
+          "id": 1629418603,
+          "schema": "2019-04-02",
+          "sent_to": [
+            "{{admin_email}}"
+          ],
+          "title": "Email (Admin)",
+          "subject": "{{ Appointment.customer_information.Name }} just canceled an appointment",
+          "message": "<p>Your appointment \"{{ Appointment.AppointmentType.title|raw }}\" with {{ Appointment.customer_information.Name }} has been canceled </p>\n<p>*** Canceled *** <br />\nAppointment Details: <br />\n{{ Appointment.start_date | date(\"F d, Y g:ia (T)\", Appointment.date_timezone) }} </p>\n<p>Type: {{ Appointment.AppointmentType.title|raw }} </p>\n<p>Customer details: <br />\n{{ Appointment.customer_information_summary }}</p>\n",
+          "trigger": "appointment_canceled",
+          "type": "email",
+          "when": "after",
+          "duration": 0
+        },
+        {
+          "appointment_types": [],
+          "id": 1629418604,
+          "schema": "2019-04-02",
+          "sent_to": [
+            "{{customer_email}}"
+          ],
+          "subject": "Your appointment has been canceled",
+          "message": "<p>Hi {{ Appointment.customer_information.Name }},<br />\nYour appointment \"{{ Appointment.AppointmentType.title|raw }}\" (booked on {{ Global.home_url }}) has been canceled</p>\n",
+          "title": "Email (Customer)",
+          "trigger": "appointment_canceled",
+          "type": "email",
+          "when": "after",
+          "duration": 0
+        }
+      ],
+      "schema_version": "2018-09-18 18:30",
+      "last_updated": "2021-08-23 23:42:10"
+    },
+    "developer": {
+      "enabled": true,
+      "enqueue_everywhere": false,
+      "separate_appointment_type_availability": false,
+      "beta_updates": false,
+      "capacity_availability": false,
+      "cache_availability": false,
+      "disable_availability_caching": false,
+      "object_cache": false,
+      "debug_mode": false,
+      "ssa_debug_mode": false,
+      "display_capacity_available": false,
+      "schema_version": "2021-02-09"
+    },
+    "license": {
+      "enabled": false,
+      "license": "",
+      "license_status": "empty",
+      "license_status_message": "",
+      "license_status_last_updated": "",
+      "schema_version": "2018-01-11",
+      "last_updated": "2021-04-13 16:21:06"
+    },
+    "advanced_scheduling": {
+      "enabled": true,
+      "schema_version": "2018-09-04",
+      "last_updated": "2021-08-20 00:27:15"
+    },
+    "blackout_dates": {
+      "enabled": false,
+      "dates": [],
+      "schema_version": "2018-02-20",
+      "last_updated": "2021-08-23 23:38:31"
+    },
+    "staff": {
+      "enabled": false,
+      "schema_version": "2019-12-26.2"
+    },
+    "google_calendar": {
+      "enabled": false,
+      "client_id": "",
+      "client_secret": "",
+      "access_token": "",
+      "web_meetings": false,
+      "refresh_interval": 500,
+      "schema_version": "2021-03-19"
+    },
+    "mailchimp": {
+      "enabled": false,
+      "api_key": "",
+      "account_details": "",
+      "lists": "",
+      "schema_version": "2018-06-21"
+    },
+    "offline_payments": {
+      "enabled": false,
+      "title": "Pay in person",
+      "description": "You are agreeing to pay this amount in person.",
+      "schema_version": "2018-10-23"
+    },
+    "payments": {
+      "enabled": false,
+      "default_currency": "USD",
+      "schema_version": "2018-10-23"
+    },
+    "paypal": {
+      "enabled": false,
+      "title": "PayPal",
+      "description": "Pay via PayPal; you can pay with your credit card if you don't have a PayPal account.",
+      "email": "",
+      "sandbox_enabled": false,
+      "identity_token": "",
+      "schema_version": "2018-10-23",
+      "ipn_url": "https://cynthia.ssahq.com/index.php?ssa-listener=paypal"
+    },
+    "sms": {
+      "enabled": false,
+      "twilio_test_mode_enabled": false,
+      "twilio_account_sid": "",
+      "twilio_auth_token": "",
+      "twilio_test_account_sid": "",
+      "twilio_test_auth_token": "",
+      "twilio_send_from_phone": "",
+      "authorized_date": "",
+      "schema_version": "2019-06-28"
+    },
+    "stripe": {
+      "enabled": false,
+      "title": "Credit card",
+      "description": "Pay with Credit Card",
+      "statement_descriptor": "",
+      "publishable_key": "",
+      "secret_key": "",
+      "test_mode_enabled": false,
+      "test_publishable_key": "",
+      "test_secret_key": "",
+      "schema_version": "2019-07-16",
+      "webhook": "http://cynthia.ssahq.com/index.php?ssa-listener=stripe"
+    },
+    "styles": {
+      "enabled": true,
+      "font": "Roboto",
+      "accent_color": "rgba(139, 195, 74, 1)",
+      "background": "rgba(255, 255, 255, 1)",
+      "padding": "1rem",
+      "contrast": false,
+      "css": "",
+      "schema_version": "2018-10-23",
+      "last_updated": "2021-08-23 23:39:21"
+    },
+    "tracking": {
+      "enabled": false,
+      "page_tracking": true,
+      "event_tracking": true,
+      "schema_version": "2019-07-19"
+    },
+    "translation": {
+      "enabled": true,
+      "locales": [],
+      "schema_version": "2019-10-15"
+    },
+    "webhooks": {
+      "enabled": false,
+      "webhooks": [],
+      "schema_version": "2018-09-18 18:30"
+    },
+    "last_updated": "2021-08-30 20:08:48",
+    "zoom": {
+      "enabled": false,
+      "auth_code": "",
+      "access_token": "",
+      "access_token_expires": "",
+      "schema_version": "2021-06-17"
+    }
+  },
+  "staff": [],
+  "appointment_types": [
+    {
+      "id": "1",
+      "author_id": "1",
+      "title": "Driver's License",
+      "slug": "drivers-license",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "indigo",
+      "capacity": "1",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "30",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": "525600",
+      "max_event_count": "0",
+      "booking_start_date": "0000-00-00 00:00:00",
+      "booking_end_date": "0000-00-00 00:00:00",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "7:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "7:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "7:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "7:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "7:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Saturday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "12:00:00"
+          }
+        ],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Address",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "City",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "State",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Zip",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Notes",
+          "display": false,
+          "required": false,
+          "icon": "assignment"
+        }
+      ],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Address",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "City",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "State",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Zip",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": "",
+      "mailchimp": "",
+      "status": "delete",
+      "visibility": "public",
+      "display_order": "0",
+      "date_created": "2021-08-20 00:21:22",
+      "date_modified": "2021-08-20 00:21:22"
+    },
+    {
+      "id": "5",
+      "author_id": "1",
+      "title": "Small Dog (< 22lbs)",
+      "slug": "small-dog",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "indigo",
+      "capacity": "1",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "30",
+      "buffer_after": "15",
+      "min_booking_notice": "1440",
+      "max_booking_notice": "525600",
+      "max_event_count": "0",
+      "booking_start_date": "0000-00-00 00:00:00",
+      "booking_end_date": "0000-00-00 00:00:00",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Address",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "City",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "State",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Zip",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": true,
+          "icon": "assignment",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Address",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "City",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "State",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Zip",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": true,
+          "icon": "assignment",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": "",
+      "mailchimp": "",
+      "status": "delete",
+      "visibility": "public",
+      "display_order": "0",
+      "date_created": "2021-08-23 20:00:22",
+      "date_modified": "2021-08-23 20:00:23"
+    },
+    {
+      "id": "8",
+      "author_id": "1",
+      "title": "Studio",
+      "slug": "studio",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "deep-purple",
+      "capacity": "1",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "30",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": "525600",
+      "max_event_count": "0",
+      "booking_start_date": "0000-00-00 00:00:00",
+      "booking_end_date": "0000-00-00 00:00:00",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": false,
+          "required": false,
+          "icon": "phone"
+        },
+        {
+          "field": "Address",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "City",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "State",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Zip",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Notes",
+          "display": false,
+          "required": false,
+          "icon": "assignment"
+        }
+      ],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": "",
+      "mailchimp": "",
+      "status": "delete",
+      "visibility": "public",
+      "display_order": "0",
+      "date_created": "2021-08-23 23:16:00",
+      "date_modified": "2021-08-23 23:16:00"
+    },
+    {
+      "id": "10",
+      "author_id": "1",
+      "title": "Trim",
+      "slug": "trim",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "pink",
+      "capacity": "1",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "15",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": "525600",
+      "max_event_count": "0",
+      "booking_start_date": "0000-00-00 00:00:00",
+      "booking_end_date": "0000-00-00 00:00:00",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "15",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Address",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "City",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "State",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Zip",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": false,
+          "icon": "assignment",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": false,
+          "icon": "assignment",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": {
+        "provider": "",
+        "url": ""
+      },
+      "mailchimp": "",
+      "status": "publish",
+      "visibility": "public",
+      "display_order": "0",
+      "date_created": "2021-08-23 23:27:29",
+      "date_modified": "2021-08-23 23:27:30"
+    },
+    {
+      "id": "2",
+      "author_id": "1",
+      "title": "Knowledge Test",
+      "slug": "knowledge-test",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "blue",
+      "capacity": "1",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "60",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": "525600",
+      "max_event_count": "0",
+      "booking_start_date": "0000-00-00 00:00:00",
+      "booking_end_date": "0000-00-00 00:00:00",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "7:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "7:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "7:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "7:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "7:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Saturday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "12:00:00"
+          }
+        ],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Address",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "City",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "State",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Zip",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Notes",
+          "display": false,
+          "required": false,
+          "icon": "assignment"
+        }
+      ],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": "",
+      "mailchimp": "",
+      "status": "delete",
+      "visibility": "public",
+      "display_order": "2",
+      "date_created": "2021-08-20 00:21:35",
+      "date_modified": "2021-08-20 00:21:35"
+    },
+    {
+      "id": "6",
+      "author_id": "1",
+      "title": "Medium Dog (23lbs - 55lbs)",
+      "slug": "medium-dog",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "blue",
+      "capacity": "1",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "30",
+      "buffer_after": "15",
+      "min_booking_notice": "1440",
+      "max_booking_notice": "525600",
+      "max_event_count": "0",
+      "booking_start_date": "0000-00-00 00:00:00",
+      "booking_end_date": "0000-00-00 00:00:00",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Address",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "City",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "State",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Zip",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": true,
+          "icon": "assignment",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Address",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "City",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "State",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Zip",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": true,
+          "icon": "assignment",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": "",
+      "mailchimp": "",
+      "status": "delete",
+      "visibility": "public",
+      "display_order": "2",
+      "date_created": "2021-08-23 20:01:42",
+      "date_modified": "2021-08-23 20:01:42"
+    },
+    {
+      "id": "9",
+      "author_id": "1",
+      "title": "Event Photography",
+      "slug": "event-photography",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "deep-purple",
+      "capacity": "1",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "60",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": "525600",
+      "max_event_count": "0",
+      "booking_start_date": "0000-00-00 00:00:00",
+      "booking_end_date": "0000-00-00 00:00:00",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": false,
+          "required": false,
+          "icon": "phone"
+        },
+        {
+          "field": "Address",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "City",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "State",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Zip",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Notes",
+          "display": false,
+          "required": false,
+          "icon": "assignment"
+        }
+      ],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": "",
+      "mailchimp": "",
+      "status": "delete",
+      "visibility": "public",
+      "display_order": "2",
+      "date_created": "2021-08-30 20:08:48",
+      "date_modified": "2021-08-23 23:27:30"
+    },
+    {
+      "id": "11",
+      "author_id": "1",
+      "title": "Cut & Shampoo",
+      "slug": "cut-shampoo",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "pink",
+      "capacity": "1",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "25",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": "525600",
+      "max_event_count": "0",
+      "booking_start_date": "0000-00-00 00:00:00",
+      "booking_end_date": "0000-00-00 00:00:00",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Address",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "City",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "State",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Zip",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": false,
+          "icon": "assignment",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": false,
+          "icon": "assignment",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": {
+        "provider": "",
+        "url": ""
+      },
+      "mailchimp": "",
+      "status": "publish",
+      "visibility": "public",
+      "display_order": "2",
+      "date_created": "2021-08-23 23:29:44",
+      "date_modified": "2021-08-23 23:29:44"
+    },
+    {
+      "id": "3",
+      "author_id": "1",
+      "title": "Motorcycle Skills Test",
+      "slug": "motorcycle-skills-test",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "light-blue",
+      "capacity": "1",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "30",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": "525600",
+      "max_event_count": "0",
+      "booking_start_date": "0000-00-00 00:00:00",
+      "booking_end_date": "0000-00-00 00:00:00",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": false,
+          "required": false,
+          "icon": "phone"
+        },
+        {
+          "field": "Address",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "City",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "State",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Zip",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Notes",
+          "display": false,
+          "required": false,
+          "icon": "assignment"
+        }
+      ],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": "",
+      "mailchimp": "",
+      "status": "delete",
+      "visibility": "public",
+      "display_order": "3",
+      "date_created": "2021-08-20 00:22:36",
+      "date_modified": "2021-08-20 00:22:36"
+    },
+    {
+      "id": "7",
+      "author_id": "1",
+      "title": "Large Dog (56lbs +)",
+      "slug": "large-dog",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "cyan",
+      "capacity": "1",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "30",
+      "buffer_after": "15",
+      "min_booking_notice": "1440",
+      "max_booking_notice": "525600",
+      "max_event_count": "0",
+      "booking_start_date": "0000-00-00 00:00:00",
+      "booking_end_date": "0000-00-00 00:00:00",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "8:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Address",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "City",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "State",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Zip",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": true,
+          "icon": "assignment",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Address",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "City",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "State",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Zip",
+          "display": true,
+          "required": true,
+          "icon": "place",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": true,
+          "icon": "assignment",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": "",
+      "mailchimp": "",
+      "status": "delete",
+      "visibility": "public",
+      "display_order": "3",
+      "date_created": "2021-08-23 20:02:19",
+      "date_modified": "2021-08-23 20:02:19"
+    },
+    {
+      "id": "12",
+      "author_id": "1",
+      "title": "Highlights",
+      "slug": "highlights",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "pink",
+      "capacity": "1",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "30",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": "525600",
+      "max_event_count": "0",
+      "booking_start_date": "0000-00-00 00:00:00",
+      "booking_end_date": "0000-00-00 00:00:00",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Address",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "City",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "State",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Zip",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": false,
+          "icon": "assignment",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": false,
+          "icon": "assignment",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": {
+        "provider": "",
+        "url": ""
+      },
+      "mailchimp": "",
+      "status": "publish",
+      "visibility": "public",
+      "display_order": "3",
+      "date_created": "2021-08-23 23:30:54",
+      "date_modified": "2021-08-23 23:30:54"
+    },
+    {
+      "id": "4",
+      "author_id": "1",
+      "title": "Road Test",
+      "slug": "road-test",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "cyan",
+      "capacity": "1",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "30",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": "525600",
+      "max_event_count": "0",
+      "booking_start_date": "0000-00-00 00:00:00",
+      "booking_end_date": "0000-00-00 00:00:00",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "7:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Tuesday": [],
+        "Wednesday": [
+          {
+            "time_start": "7:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Thursday": [],
+        "Friday": [
+          {
+            "time_start": "7:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Address",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "City",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "State",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Zip",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Notes",
+          "display": false,
+          "required": false,
+          "icon": "assignment"
+        }
+      ],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": "",
+      "mailchimp": "",
+      "status": "delete",
+      "visibility": "public",
+      "display_order": "4",
+      "date_created": "2021-08-20 00:22:46",
+      "date_modified": "2021-08-20 00:22:46"
+    },
+    {
+      "id": "13",
+      "author_id": "1",
+      "title": "All-Over Color",
+      "slug": "all-over-color",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "pink",
+      "capacity": "1",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "45",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": "525600",
+      "max_event_count": "0",
+      "booking_start_date": "0000-00-00 00:00:00",
+      "booking_end_date": "0000-00-00 00:00:00",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Address",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "City",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "State",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Zip",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": false,
+          "icon": "assignment",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": false,
+          "icon": "assignment",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": {
+        "provider": "",
+        "url": ""
+      },
+      "mailchimp": "",
+      "status": "publish",
+      "visibility": "public",
+      "display_order": "4",
+      "date_created": "2021-08-23 23:31:06",
+      "date_modified": "2021-08-23 23:31:06"
+    },
+    {
+      "id": "14",
+      "author_id": "1",
+      "title": "Special Occasion",
+      "slug": "special-occasion",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "pink",
+      "capacity": "1",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "60",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": "525600",
+      "max_event_count": "0",
+      "booking_start_date": "0000-00-00 00:00:00",
+      "booking_end_date": "0000-00-00 00:00:00",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "9:00:00",
+            "time_end": "19:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Address",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "City",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "State",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Zip",
+          "display": false,
+          "required": false,
+          "icon": "place"
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": false,
+          "icon": "assignment",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "icon": "face",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "icon": "email",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "icon": "phone",
+          "type": "single-text",
+          "values": []
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": false,
+          "icon": "assignment",
+          "type": "single-text",
+          "values": []
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": {
+        "provider": "",
+        "url": ""
+      },
+      "mailchimp": "",
+      "status": "publish",
+      "visibility": "public",
+      "display_order": "5",
+      "date_created": "2021-08-23 23:32:02",
+      "date_modified": "2021-08-23 23:32:02"
+    }
+  ],
+  "staff_appointment_types": []
+}
