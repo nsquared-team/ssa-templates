@@ -12,7 +12,7 @@ Plus Edition:
 - Therapist Consultation (therapist-export.txt)
 
 Professional Edition: 
-- Photography Studio Session
+- Photography Studio Session (photography-studio-export.txt)
 - Contractor Service Request
 
 Business Edition:
