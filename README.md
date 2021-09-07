@@ -13,7 +13,7 @@ Plus Edition:
 
 Professional Edition: 
 - Photography Studio Session (photography-studio-export.txt)
-- Contractor Service Request
+- Contractor Service Request (contractor-service-export.txt)
 
 Business Edition:
 - Restaurant Reservation
