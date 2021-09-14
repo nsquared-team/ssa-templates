@@ -16,5 +16,5 @@ Professional Edition:
 - Contractor Service Request (contractor-service-export.txt)
 
 Business Edition:
-- Restaurant Reservation
+- Restaurant Reservation (restaurant-export.txt)
 - Clinic Appointment
