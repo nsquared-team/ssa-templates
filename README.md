@@ -17,4 +17,4 @@ Professional Edition:
 
 Business Edition:
 - Restaurant Reservation (restaurant-export.txt)
-- Clinic Appointment
+- Clinic Appointment (clinic-export.txt)
