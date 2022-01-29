@@ -30,22 +30,21 @@
     },
     "global": {
       "enabled": false,
-      "wizard_completed": "2021-08-20 00:16:48",
-      "timezone_string": "UTC",
+      "wizard_completed": "2022-01-29 01:15:10",
+      "timezone_string": "America/New_York",
       "country_code": "",
       "start_of_week": "1",
       "date_format": "F j, Y",
       "time_format": "g:i a",
-      "admin_email": "your@email.com",
+      "admin_email": "admin@blank.faelian.net",
       "admin_phone": false,
-      "staff_name": "Your Name",
-      "company_name": "Dog Walker",
-      "last_updated": "2021-08-30 20:08:25",
+      "staff_name": "admin",
+      "company_name": "My Blog",
+      "last_updated": "2022-01-29 01:15:12",
       "booking_post_id": "",
       "schema_version": "2021-03-23",
       "date_format_moment": "MMMM D, YYYY",
       "time_format_moment": "h:mm a",
-      "booking_post_permalink": false,
       "locale": "en_US"
     },
     "notifications": {
@@ -53,7 +52,7 @@
       "notifications": [
         {
           "appointment_types": [],
-          "id": 1629418601,
+          "id": 1643418906,
           "schema": "2019-04-02",
           "sent_to": [
             "{{admin_email}}"
@@ -68,23 +67,22 @@
         },
         {
           "appointment_types": [],
-          "id": 1629418602,
+          "id": 1643418907,
           "schema": "2019-04-02",
           "sent_to": [
             "{{customer_email}}"
           ],
           "subject": "Your appointment details",
-          "message": "<p>Hi {{ Appointment.customer_information.Name }}!</p>\n<p>This is a confirmation of the appointment you just booked on {{ Global.site_url }} </p>\n<p>Appointment scheduled for {{ Appointment.start_date | date(\"F d, Y g:ia (T)\", Appointment.customer_timezone) }} </p>\n<p>{% if instructions %}<br>\nInstructions: {{ instructions|raw }} <br>\n{% endif %}</p>\n<p>{% if Appointment.web_meeting_url %}<br>\nAt your appointment time, join the meeting using this link: {{ Appointment.web_meeting_url }}{% endif %}</p>\n<p>Type: {{ Appointment.AppointmentType.title|raw }} </p>\n<p>Your details: <br>\n{{ Appointment.customer_information_summary }}</p>\n<p>If you need to cancel or change your appointment, you can do so by visiting this link: <br>\n{{ Appointment.public_edit_url }}</p>\n",
+          "message": "<p>Hi {{ Appointment.customer_information.Name }}, </p>\n<p>This is a confirmation of the appointment you just booked on {{ Global.site_url }} </p>\n<p>Appointment scheduled for {{ Appointment.start_date | date(\"F d, Y g:ia (T)\", Appointment.customer_timezone) }} </p>\n<p>{% if instructions %}<br />\nInstructions: {{ instructions|raw }} <br />\n{% endif %}</p>\n<p>{% if Appointment.web_meeting_url %}<br />\nAt your appointment time, join the meeting using this link: {{ Appointment.web_meeting_url }}{% endif %}</p>\n<p>Type: {{ Appointment.AppointmentType.title|raw }} </p>\n<p>Your details: <br />\n{{ Appointment.customer_information_summary }}</p>\n<p>If you need to cancel or change your appointment, you can do so by visiting this link: <br />\n{{ Appointment.public_edit_url }}</p>\n",
           "title": "Email (Customer)",
           "trigger": "appointment_booked",
           "type": "email",
           "when": "after",
-          "duration": 0,
-          "last_modified": "2021-08-23 20:06:47"
+          "duration": 0
         },
         {
           "appointment_types": [],
-          "id": 1629418603,
+          "id": 1643418908,
           "schema": "2019-04-02",
           "sent_to": [
             "{{admin_email}}"
@@ -99,7 +97,7 @@
         },
         {
           "appointment_types": [],
-          "id": 1629418604,
+          "id": 1643418909,
           "schema": "2019-04-02",
           "sent_to": [
             "{{customer_email}}"
@@ -114,7 +112,7 @@
         }
       ],
       "schema_version": "2018-09-18 18:30",
-      "last_updated": "2021-08-23 20:06:47"
+      "last_updated": "2022-01-29 01:15:06"
     },
     "developer": {
       "enabled": true,
@@ -142,24 +140,13 @@
     "advanced_scheduling": {
       "enabled": true,
       "schema_version": "2018-09-04",
-      "last_updated": "2021-08-20 00:27:15"
+      "last_updated": "2022-01-29 01:31:17"
     },
     "blackout_dates": {
       "enabled": true,
-      "dates": [
-        "2021-11-25",
-        "2021-11-26",
-        "2021-12-24",
-        "2021-12-25",
-        "2022-01-01",
-        "2022-07-04",
-        "2022-11-24",
-        "2022-11-25",
-        "2022-12-24",
-        "2022-12-25"
-      ],
+      "dates": [],
       "schema_version": "2018-02-20",
-      "last_updated": "2021-08-23 20:06:28"
+      "last_updated": "2022-01-29 01:31:25"
     },
     "staff": {
       "enabled": false,
@@ -224,7 +211,7 @@
       "test_publishable_key": "",
       "test_secret_key": "",
       "schema_version": "2019-07-16",
-      "webhook": "http://cynthia.ssahq.com/index.php?ssa-listener=stripe"
+      "webhook": "https://cynthia.ssahq.com/index.php?ssa-listener=stripe"
     },
     "styles": {
       "enabled": true,
@@ -252,235 +239,21 @@
       "webhooks": [],
       "schema_version": "2018-09-18 18:30"
     },
-    "last_updated": "2021-08-30 20:02:16",
     "zoom": {
       "enabled": false,
       "auth_code": "",
       "access_token": "",
       "access_token_expires": "",
       "schema_version": "2021-06-17"
-    }
+    },
+    "last_updated": "2022-01-29 01:21:59"
   },
   "staff": [],
   "appointment_types": [
     {
       "id": "1",
       "author_id": "1",
-      "title": "Driver's License",
-      "slug": "drivers-license",
-      "location": "",
-      "description": "",
-      "instructions": "",
-      "label": "indigo",
-      "capacity": "1",
-      "staff_capacity": "1",
-      "capacity_type": "individual",
-      "has_max_capacity": "0",
-      "buffer_before": "0",
-      "duration": "30",
-      "buffer_after": "0",
-      "min_booking_notice": "1440",
-      "max_booking_notice": "525600",
-      "max_event_count": "0",
-      "booking_start_date": "0000-00-00 00:00:00",
-      "booking_end_date": "0000-00-00 00:00:00",
-      "availability_type": "available_blocks",
-      "availability": {
-        "Monday": [
-          {
-            "time_start": "7:00:00",
-            "time_end": "17:00:00"
-          }
-        ],
-        "Tuesday": [
-          {
-            "time_start": "7:00:00",
-            "time_end": "17:00:00"
-          }
-        ],
-        "Wednesday": [
-          {
-            "time_start": "7:00:00",
-            "time_end": "17:00:00"
-          }
-        ],
-        "Thursday": [
-          {
-            "time_start": "7:00:00",
-            "time_end": "17:00:00"
-          }
-        ],
-        "Friday": [
-          {
-            "time_start": "7:00:00",
-            "time_end": "17:00:00"
-          }
-        ],
-        "Saturday": [
-          {
-            "time_start": "8:00:00",
-            "time_end": "12:00:00"
-          }
-        ],
-        "Sunday": []
-      },
-      "availability_start_date": null,
-      "availability_end_date": null,
-      "availability_increment": "30",
-      "timezone_style": "localized",
-      "booking_layout": "week",
-      "customer_information": [
-        {
-          "field": "Name",
-          "display": true,
-          "required": true,
-          "icon": "face",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Email",
-          "display": true,
-          "required": true,
-          "icon": "email",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Phone",
-          "display": true,
-          "required": true,
-          "icon": "phone",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Address",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "City",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "State",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Zip",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Notes",
-          "display": false,
-          "required": false,
-          "icon": "assignment"
-        }
-      ],
-      "custom_customer_information": [
-        {
-          "field": "Name",
-          "display": true,
-          "required": true,
-          "icon": "face",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Email",
-          "display": true,
-          "required": true,
-          "icon": "email",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Phone",
-          "display": true,
-          "required": true,
-          "icon": "phone",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Address",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "City",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "State",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Zip",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        }
-      ],
-      "notifications": [
-        {
-          "field": "admin",
-          "send": true
-        },
-        {
-          "field": "customer",
-          "send": true
-        }
-      ],
-      "payments": "",
-      "staff": {
-        "required": "",
-        "assignment": "random"
-      },
-      "google_calendars_availability": [],
-      "google_calendar_booking": "",
-      "shared_calendar_event": "1",
-      "web_meetings": "",
-      "mailchimp": "",
-      "status": "delete",
-      "visibility": "public",
-      "display_order": "0",
-      "date_created": "2021-08-20 00:21:22",
-      "date_modified": "2021-08-20 00:21:22"
-    },
-    {
-      "id": "5",
-      "author_id": "1",
-      "title": "Small Dog (< 22lbs)",
+      "title": "Small Dog (<22lbs)",
       "slug": "small-dog",
       "location": "",
       "description": "",
@@ -492,7 +265,7 @@
       "has_max_capacity": "0",
       "buffer_before": "0",
       "duration": "30",
-      "buffer_after": "15",
+      "buffer_after": "0",
       "min_booking_notice": "1440",
       "max_booking_notice": "525600",
       "max_event_count": "0",
@@ -502,31 +275,31 @@
       "availability": {
         "Monday": [
           {
-            "time_start": "8:00:00",
+            "time_start": "08:00:00",
             "time_end": "18:00:00"
           }
         ],
         "Tuesday": [
           {
-            "time_start": "8:00:00",
+            "time_start": "08:00:00",
             "time_end": "18:00:00"
           }
         ],
         "Wednesday": [
           {
-            "time_start": "8:00:00",
+            "time_start": "08:00:00",
             "time_end": "18:00:00"
           }
         ],
         "Thursday": [
           {
-            "time_start": "8:00:00",
+            "time_start": "08:00:00",
             "time_end": "18:00:00"
           }
         ],
         "Friday": [
           {
-            "time_start": "8:00:00",
+            "time_start": "08:00:00",
             "time_end": "18:00:00"
           }
         ],
@@ -538,135 +311,70 @@
       "availability_increment": "30",
       "timezone_style": "localized",
       "booking_layout": "week",
-      "customer_information": [
-        {
-          "field": "Name",
-          "display": true,
-          "required": true,
-          "icon": "face",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Email",
-          "display": true,
-          "required": true,
-          "icon": "email",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Phone",
-          "display": true,
-          "required": true,
-          "icon": "phone",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Address",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "City",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "State",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Zip",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Notes",
-          "display": true,
-          "required": true,
-          "icon": "assignment",
-          "type": "single-text",
-          "values": []
-        }
-      ],
+      "customer_information": [],
       "custom_customer_information": [
         {
           "field": "Name",
           "display": true,
           "required": true,
-          "icon": "face",
           "type": "single-text",
-          "values": []
+          "icon": "face",
+          "values": ""
         },
         {
           "field": "Email",
           "display": true,
           "required": true,
-          "icon": "email",
           "type": "single-text",
-          "values": []
+          "icon": "email",
+          "values": ""
         },
         {
           "field": "Phone",
           "display": true,
           "required": true,
-          "icon": "phone",
-          "type": "single-text",
+          "type": "phone",
+          "icon": "call",
           "values": []
         },
         {
           "field": "Address",
           "display": true,
           "required": true,
-          "icon": "place",
           "type": "single-text",
+          "icon": "home",
           "values": []
         },
         {
           "field": "City",
           "display": true,
           "required": true,
-          "icon": "place",
           "type": "single-text",
+          "icon": "",
           "values": []
         },
         {
           "field": "State",
           "display": true,
           "required": true,
-          "icon": "place",
           "type": "single-text",
+          "icon": "",
           "values": []
         },
         {
           "field": "Zip",
           "display": true,
           "required": true,
-          "icon": "place",
           "type": "single-text",
+          "icon": "",
           "values": []
         },
         {
           "field": "Notes",
           "display": true,
-          "required": true,
-          "icon": "assignment",
-          "type": "single-text",
+          "required": false,
+          "type": "multi-text",
+          "icon": "chat",
           "values": []
         }
       ],
@@ -688,193 +396,22 @@
       "google_calendars_availability": [],
       "google_calendar_booking": "",
       "shared_calendar_event": "1",
-      "web_meetings": "",
+      "web_meetings": {
+        "provider": "",
+        "url": ""
+      },
       "mailchimp": "",
       "status": "publish",
       "visibility": "public",
-      "display_order": "0",
-      "date_created": "2021-08-23 20:00:22",
-      "date_modified": "2021-08-23 20:00:23"
+      "display_order": "1",
+      "date_created": "2022-01-29 01:30:14",
+      "date_modified": "2022-01-29 01:30:14"
     },
     {
       "id": "2",
       "author_id": "1",
-      "title": "Knowledge Test",
-      "slug": "knowledge-test",
-      "location": "",
-      "description": "",
-      "instructions": "",
-      "label": "blue",
-      "capacity": "1",
-      "staff_capacity": "1",
-      "capacity_type": "individual",
-      "has_max_capacity": "0",
-      "buffer_before": "0",
-      "duration": "60",
-      "buffer_after": "0",
-      "min_booking_notice": "1440",
-      "max_booking_notice": "525600",
-      "max_event_count": "0",
-      "booking_start_date": "0000-00-00 00:00:00",
-      "booking_end_date": "0000-00-00 00:00:00",
-      "availability_type": "available_blocks",
-      "availability": {
-        "Monday": [
-          {
-            "time_start": "7:00:00",
-            "time_end": "17:00:00"
-          }
-        ],
-        "Tuesday": [
-          {
-            "time_start": "7:00:00",
-            "time_end": "17:00:00"
-          }
-        ],
-        "Wednesday": [
-          {
-            "time_start": "7:00:00",
-            "time_end": "17:00:00"
-          }
-        ],
-        "Thursday": [
-          {
-            "time_start": "7:00:00",
-            "time_end": "17:00:00"
-          }
-        ],
-        "Friday": [
-          {
-            "time_start": "7:00:00",
-            "time_end": "17:00:00"
-          }
-        ],
-        "Saturday": [
-          {
-            "time_start": "8:00:00",
-            "time_end": "12:00:00"
-          }
-        ],
-        "Sunday": []
-      },
-      "availability_start_date": null,
-      "availability_end_date": null,
-      "availability_increment": "30",
-      "timezone_style": "localized",
-      "booking_layout": "week",
-      "customer_information": [
-        {
-          "field": "Name",
-          "display": true,
-          "required": true,
-          "icon": "face",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Email",
-          "display": true,
-          "required": true,
-          "icon": "email",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Phone",
-          "display": true,
-          "required": true,
-          "icon": "phone",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Address",
-          "display": false,
-          "required": false,
-          "icon": "place"
-        },
-        {
-          "field": "City",
-          "display": false,
-          "required": false,
-          "icon": "place"
-        },
-        {
-          "field": "State",
-          "display": false,
-          "required": false,
-          "icon": "place"
-        },
-        {
-          "field": "Zip",
-          "display": false,
-          "required": false,
-          "icon": "place"
-        },
-        {
-          "field": "Notes",
-          "display": false,
-          "required": false,
-          "icon": "assignment"
-        }
-      ],
-      "custom_customer_information": [
-        {
-          "field": "Name",
-          "display": true,
-          "required": true,
-          "icon": "face",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Email",
-          "display": true,
-          "required": true,
-          "icon": "email",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Phone",
-          "display": true,
-          "required": true,
-          "icon": "phone",
-          "type": "single-text",
-          "values": []
-        }
-      ],
-      "notifications": [
-        {
-          "field": "admin",
-          "send": true
-        },
-        {
-          "field": "customer",
-          "send": true
-        }
-      ],
-      "payments": "",
-      "staff": {
-        "required": "",
-        "assignment": "random"
-      },
-      "google_calendars_availability": [],
-      "google_calendar_booking": "",
-      "shared_calendar_event": "1",
-      "web_meetings": "",
-      "mailchimp": "",
-      "status": "delete",
-      "visibility": "public",
-      "display_order": "2",
-      "date_created": "2021-08-20 00:21:35",
-      "date_modified": "2021-08-20 00:21:35"
-    },
-    {
-      "id": "6",
-      "author_id": "1",
-      "title": "Medium Dog (23lbs - 55lbs)",
-      "slug": "medium-dog",
+      "title": "Medium Dog (23 - 55lbs)",
+      "slug": "medium-dog-23-55lbs",
       "location": "",
       "description": "",
       "instructions": "",
@@ -885,7 +422,7 @@
       "has_max_capacity": "0",
       "buffer_before": "0",
       "duration": "30",
-      "buffer_after": "15",
+      "buffer_after": "0",
       "min_booking_notice": "1440",
       "max_booking_notice": "525600",
       "max_event_count": "0",
@@ -895,31 +432,31 @@
       "availability": {
         "Monday": [
           {
-            "time_start": "8:00:00",
+            "time_start": "08:00:00",
             "time_end": "18:00:00"
           }
         ],
         "Tuesday": [
           {
-            "time_start": "8:00:00",
+            "time_start": "08:00:00",
             "time_end": "18:00:00"
           }
         ],
         "Wednesday": [
           {
-            "time_start": "8:00:00",
+            "time_start": "08:00:00",
             "time_end": "18:00:00"
           }
         ],
         "Thursday": [
           {
-            "time_start": "8:00:00",
+            "time_start": "08:00:00",
             "time_end": "18:00:00"
           }
         ],
         "Friday": [
           {
-            "time_start": "8:00:00",
+            "time_start": "08:00:00",
             "time_end": "18:00:00"
           }
         ],
@@ -931,135 +468,70 @@
       "availability_increment": "30",
       "timezone_style": "localized",
       "booking_layout": "week",
-      "customer_information": [
-        {
-          "field": "Name",
-          "display": true,
-          "required": true,
-          "icon": "face",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Email",
-          "display": true,
-          "required": true,
-          "icon": "email",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Phone",
-          "display": true,
-          "required": true,
-          "icon": "phone",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Address",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "City",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "State",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Zip",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Notes",
-          "display": true,
-          "required": true,
-          "icon": "assignment",
-          "type": "single-text",
-          "values": []
-        }
-      ],
+      "customer_information": [],
       "custom_customer_information": [
         {
           "field": "Name",
           "display": true,
           "required": true,
-          "icon": "face",
           "type": "single-text",
-          "values": []
+          "icon": "face",
+          "values": ""
         },
         {
           "field": "Email",
           "display": true,
           "required": true,
-          "icon": "email",
           "type": "single-text",
-          "values": []
+          "icon": "email",
+          "values": ""
         },
         {
           "field": "Phone",
           "display": true,
           "required": true,
-          "icon": "phone",
-          "type": "single-text",
+          "type": "phone",
+          "icon": "call",
           "values": []
         },
         {
           "field": "Address",
           "display": true,
           "required": true,
-          "icon": "place",
           "type": "single-text",
+          "icon": "home",
           "values": []
         },
         {
           "field": "City",
           "display": true,
           "required": true,
-          "icon": "place",
           "type": "single-text",
+          "icon": "",
           "values": []
         },
         {
           "field": "State",
           "display": true,
           "required": true,
-          "icon": "place",
           "type": "single-text",
+          "icon": "",
           "values": []
         },
         {
           "field": "Zip",
           "display": true,
           "required": true,
-          "icon": "place",
           "type": "single-text",
+          "icon": "",
           "values": []
         },
         {
           "field": "Notes",
           "display": true,
-          "required": true,
-          "icon": "assignment",
-          "type": "single-text",
+          "required": false,
+          "type": "multi-text",
+          "icon": "chat",
           "values": []
         }
       ],
@@ -1081,23 +553,26 @@
       "google_calendars_availability": [],
       "google_calendar_booking": "",
       "shared_calendar_event": "1",
-      "web_meetings": "",
+      "web_meetings": {
+        "provider": "",
+        "url": ""
+      },
       "mailchimp": "",
       "status": "publish",
       "visibility": "public",
       "display_order": "2",
-      "date_created": "2021-08-23 20:01:42",
-      "date_modified": "2021-08-23 20:01:42"
+      "date_created": "2022-01-29 01:30:33",
+      "date_modified": "2022-01-29 01:30:33"
     },
     {
       "id": "3",
       "author_id": "1",
-      "title": "Motorcycle Skills Test",
-      "slug": "motorcycle-skills-test",
+      "title": "Large Dog (>56lbs)",
+      "slug": "large-dog-56lbs",
       "location": "",
       "description": "",
       "instructions": "",
-      "label": "light-blue",
+      "label": "cyan",
       "capacity": "1",
       "staff_capacity": "1",
       "capacity_type": "individual",
@@ -1114,52 +589,32 @@
       "availability": {
         "Monday": [
           {
-            "time_start": "09:00:00",
-            "time_end": "12:00:00"
-          },
-          {
-            "time_start": "13:00:00",
-            "time_end": "17:00:00"
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
           }
         ],
         "Tuesday": [
           {
-            "time_start": "09:00:00",
-            "time_end": "12:00:00"
-          },
-          {
-            "time_start": "13:00:00",
-            "time_end": "17:00:00"
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
           }
         ],
         "Wednesday": [
           {
-            "time_start": "09:00:00",
-            "time_end": "12:00:00"
-          },
-          {
-            "time_start": "13:00:00",
-            "time_end": "17:00:00"
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
           }
         ],
         "Thursday": [
           {
-            "time_start": "09:00:00",
-            "time_end": "12:00:00"
-          },
-          {
-            "time_start": "13:00:00",
-            "time_end": "17:00:00"
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
           }
         ],
         "Friday": [
           {
-            "time_start": "09:00:00",
-            "time_end": "12:00:00"
-          },
-          {
-            "time_start": "13:00:00",
-            "time_end": "17:00:00"
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
           }
         ],
         "Saturday": [],
@@ -1170,75 +625,70 @@
       "availability_increment": "30",
       "timezone_style": "localized",
       "booking_layout": "week",
-      "customer_information": [
-        {
-          "field": "Name",
-          "display": true,
-          "required": true,
-          "icon": "face",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Email",
-          "display": true,
-          "required": true,
-          "icon": "email",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Phone",
-          "display": false,
-          "required": false,
-          "icon": "phone"
-        },
-        {
-          "field": "Address",
-          "display": false,
-          "required": false,
-          "icon": "place"
-        },
-        {
-          "field": "City",
-          "display": false,
-          "required": false,
-          "icon": "place"
-        },
-        {
-          "field": "State",
-          "display": false,
-          "required": false,
-          "icon": "place"
-        },
-        {
-          "field": "Zip",
-          "display": false,
-          "required": false,
-          "icon": "place"
-        },
-        {
-          "field": "Notes",
-          "display": false,
-          "required": false,
-          "icon": "assignment"
-        }
-      ],
+      "customer_information": [],
       "custom_customer_information": [
         {
           "field": "Name",
           "display": true,
           "required": true,
-          "icon": "face",
           "type": "single-text",
-          "values": []
+          "icon": "face",
+          "values": ""
         },
         {
           "field": "Email",
           "display": true,
           "required": true,
-          "icon": "email",
           "type": "single-text",
+          "icon": "email",
+          "values": ""
+        },
+        {
+          "field": "Phone",
+          "display": true,
+          "required": true,
+          "type": "phone",
+          "icon": "call",
+          "values": []
+        },
+        {
+          "field": "Address",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "home",
+          "values": []
+        },
+        {
+          "field": "City",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "",
+          "values": []
+        },
+        {
+          "field": "State",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "",
+          "values": []
+        },
+        {
+          "field": "Zip",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "",
+          "values": []
+        },
+        {
+          "field": "Notes",
+          "display": true,
+          "required": false,
+          "type": "multi-text",
+          "icon": "chat",
           "values": []
         }
       ],
@@ -1260,392 +710,20 @@
       "google_calendars_availability": [],
       "google_calendar_booking": "",
       "shared_calendar_event": "1",
-      "web_meetings": "",
-      "mailchimp": "",
-      "status": "delete",
-      "visibility": "public",
-      "display_order": "3",
-      "date_created": "2021-08-20 00:22:36",
-      "date_modified": "2021-08-20 00:22:36"
-    },
-    {
-      "id": "7",
-      "author_id": "1",
-      "title": "Large Dog (56lbs +)",
-      "slug": "large-dog",
-      "location": "",
-      "description": "",
-      "instructions": "",
-      "label": "cyan",
-      "capacity": "1",
-      "staff_capacity": "1",
-      "capacity_type": "individual",
-      "has_max_capacity": "0",
-      "buffer_before": "0",
-      "duration": "30",
-      "buffer_after": "15",
-      "min_booking_notice": "1440",
-      "max_booking_notice": "525600",
-      "max_event_count": "0",
-      "booking_start_date": "0000-00-00 00:00:00",
-      "booking_end_date": "0000-00-00 00:00:00",
-      "availability_type": "available_blocks",
-      "availability": {
-        "Monday": [
-          {
-            "time_start": "8:00:00",
-            "time_end": "18:00:00"
-          }
-        ],
-        "Tuesday": [
-          {
-            "time_start": "8:00:00",
-            "time_end": "18:00:00"
-          }
-        ],
-        "Wednesday": [
-          {
-            "time_start": "8:00:00",
-            "time_end": "18:00:00"
-          }
-        ],
-        "Thursday": [
-          {
-            "time_start": "8:00:00",
-            "time_end": "18:00:00"
-          }
-        ],
-        "Friday": [
-          {
-            "time_start": "8:00:00",
-            "time_end": "18:00:00"
-          }
-        ],
-        "Saturday": [],
-        "Sunday": []
+      "web_meetings": {
+        "provider": "",
+        "url": ""
       },
-      "availability_start_date": null,
-      "availability_end_date": null,
-      "availability_increment": "30",
-      "timezone_style": "localized",
-      "booking_layout": "week",
-      "customer_information": [
-        {
-          "field": "Name",
-          "display": true,
-          "required": true,
-          "icon": "face",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Email",
-          "display": true,
-          "required": true,
-          "icon": "email",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Phone",
-          "display": true,
-          "required": true,
-          "icon": "phone",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Address",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "City",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "State",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Zip",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Notes",
-          "display": true,
-          "required": true,
-          "icon": "assignment",
-          "type": "single-text",
-          "values": []
-        }
-      ],
-      "custom_customer_information": [
-        {
-          "field": "Name",
-          "display": true,
-          "required": true,
-          "icon": "face",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Email",
-          "display": true,
-          "required": true,
-          "icon": "email",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Phone",
-          "display": true,
-          "required": true,
-          "icon": "phone",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Address",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "City",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "State",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Zip",
-          "display": true,
-          "required": true,
-          "icon": "place",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Notes",
-          "display": true,
-          "required": true,
-          "icon": "assignment",
-          "type": "single-text",
-          "values": []
-        }
-      ],
-      "notifications": [
-        {
-          "field": "admin",
-          "send": true
-        },
-        {
-          "field": "customer",
-          "send": true
-        }
-      ],
-      "payments": "",
-      "staff": {
-        "required": "",
-        "assignment": "random"
-      },
-      "google_calendars_availability": [],
-      "google_calendar_booking": "",
-      "shared_calendar_event": "1",
-      "web_meetings": "",
       "mailchimp": "",
       "status": "publish",
       "visibility": "public",
       "display_order": "3",
-      "date_created": "2021-08-23 20:02:19",
-      "date_modified": "2021-08-23 20:02:19"
-    },
-    {
-      "id": "4",
-      "author_id": "1",
-      "title": "Road Test",
-      "slug": "road-test",
-      "location": "",
-      "description": "",
-      "instructions": "",
-      "label": "cyan",
-      "capacity": "1",
-      "staff_capacity": "1",
-      "capacity_type": "individual",
-      "has_max_capacity": "0",
-      "buffer_before": "0",
-      "duration": "30",
-      "buffer_after": "0",
-      "min_booking_notice": "1440",
-      "max_booking_notice": "525600",
-      "max_event_count": "0",
-      "booking_start_date": "0000-00-00 00:00:00",
-      "booking_end_date": "0000-00-00 00:00:00",
-      "availability_type": "available_blocks",
-      "availability": {
-        "Monday": [
-          {
-            "time_start": "7:00:00",
-            "time_end": "17:00:00"
-          }
-        ],
-        "Tuesday": [],
-        "Wednesday": [
-          {
-            "time_start": "7:00:00",
-            "time_end": "17:00:00"
-          }
-        ],
-        "Thursday": [],
-        "Friday": [
-          {
-            "time_start": "7:00:00",
-            "time_end": "17:00:00"
-          }
-        ],
-        "Saturday": [],
-        "Sunday": []
-      },
-      "availability_start_date": null,
-      "availability_end_date": null,
-      "availability_increment": "30",
-      "timezone_style": "localized",
-      "booking_layout": "week",
-      "customer_information": [
-        {
-          "field": "Name",
-          "display": true,
-          "required": true,
-          "icon": "face",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Email",
-          "display": true,
-          "required": true,
-          "icon": "email",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Phone",
-          "display": true,
-          "required": true,
-          "icon": "phone",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Address",
-          "display": false,
-          "required": false,
-          "icon": "place"
-        },
-        {
-          "field": "City",
-          "display": false,
-          "required": false,
-          "icon": "place"
-        },
-        {
-          "field": "State",
-          "display": false,
-          "required": false,
-          "icon": "place"
-        },
-        {
-          "field": "Zip",
-          "display": false,
-          "required": false,
-          "icon": "place"
-        },
-        {
-          "field": "Notes",
-          "display": false,
-          "required": false,
-          "icon": "assignment"
-        }
-      ],
-      "custom_customer_information": [
-        {
-          "field": "Name",
-          "display": true,
-          "required": true,
-          "icon": "face",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Email",
-          "display": true,
-          "required": true,
-          "icon": "email",
-          "type": "single-text",
-          "values": []
-        },
-        {
-          "field": "Phone",
-          "display": true,
-          "required": true,
-          "icon": "phone",
-          "type": "single-text",
-          "values": []
-        }
-      ],
-      "notifications": [
-        {
-          "field": "admin",
-          "send": true
-        },
-        {
-          "field": "customer",
-          "send": true
-        }
-      ],
-      "payments": "",
-      "staff": {
-        "required": "",
-        "assignment": "random"
-      },
-      "google_calendars_availability": [],
-      "google_calendar_booking": "",
-      "shared_calendar_event": "1",
-      "web_meetings": "",
-      "mailchimp": "",
-      "status": "delete",
-      "visibility": "public",
-      "display_order": "4",
-      "date_created": "2021-08-20 00:22:46",
-      "date_modified": "2021-08-20 00:22:46"
+      "date_created": "2022-01-29 01:30:50",
+      "date_modified": "2022-01-29 01:30:50"
     }
   ],
-  "staff_appointment_types": []
+  "staff_appointment_types": [],
+  "appointments": [],
+  "appointment_meta": [],
+  "staff_appointments": []
 }
