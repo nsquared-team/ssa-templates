@@ -1,0 +1,1576 @@
+{
+  "settings": {
+    "capacity": {
+      "enabled": true,
+      "schema_version": "2020-04-28"
+    },
+    "installed": {
+      "schema_version": "2020-09-14",
+      "blackout_dates": true,
+      "advanced_scheduling": true,
+      "capacity": true,
+      "developer": true,
+      "google_calendar": true,
+      "license": true,
+      "mailchimp": true,
+      "notifications": true,
+      "offline_payments": true,
+      "payments": true,
+      "paypal": true,
+      "reminders": true,
+      "sms": true,
+      "staff": true,
+      "stripe": true,
+      "styles": true,
+      "tracking": true,
+      "translation": true,
+      "webhooks": true,
+      "woocommerce": true,
+      "zoom": true,
+      "calendar_events": true,
+      "webex": true
+    },
+    "global": {
+      "enabled": false,
+      "wizard_completed": "2022-01-29 01:15:10",
+      "timezone_string": "America/New_York",
+      "country_code": "",
+      "start_of_week": "1",
+      "date_format": "F j, Y",
+      "time_format": "g:i a",
+      "admin_email": "foxy@example.com",
+      "admin_phone": false,
+      "staff_name": "Foxy",
+      "company_name": "My Blog",
+      "last_updated": "2022-05-24 15:46:28",
+      "booking_post_id": "",
+      "schema_version": "2021-03-23",
+      "date_format_moment": "MMMM D, YYYY",
+      "time_format_moment": "h:mm a",
+      "locale": "en_US"
+    },
+    "notifications": {
+      "enabled": true,
+      "notifications": [
+        {
+          "appointment_types": [],
+          "id": 1643418906,
+          "schema": "2019-04-02",
+          "sent_to": [
+            "{{admin_email}}"
+          ],
+          "title": "Email (Admin)",
+          "subject": "{{ Appointment.customer_information.Name }} just booked an appointment",
+          "message": "<p>{{ Appointment.customer_information.Name }} just booked an appointment on {{ Global.home_url }} </p>\n<p>Appointment Details: <br />\nStarting at {{ Appointment.start_date | date(\"F d, Y g:ia (T)\", Appointment.date_timezone) }} </p>\n<p>{% if instructions %}<br />\nInstructions: {{ instructions|raw }} <br />\n{% endif %}</p>\n<p>{% if Appointment.web_meeting_url %}<br />\nAt your appointment time, join the meeting using this link: {{ Appointment.web_meeting_url }}{% endif %}</p>\n<p>Type: {{ Appointment.AppointmentType.title|raw }} </p>\n<p>Customer details: <br />\n{{ Appointment.customer_information_summary }}</p>\n",
+          "trigger": "appointment_booked",
+          "type": "email",
+          "when": "after",
+          "duration": 0
+        },
+        {
+          "appointment_types": [],
+          "id": 1643418907,
+          "schema": "2019-04-02",
+          "sent_to": [
+            "{{customer_email}}"
+          ],
+          "subject": "Your appointment details",
+          "message": "<p>Hi {{ Appointment.customer_information.Name }}, </p>\n<p>This is a confirmation of the appointment you just booked on {{ Global.site_url }} </p>\n<p>Appointment scheduled for {{ Appointment.start_date | date(\"F d, Y g:ia (T)\", Appointment.customer_timezone) }} </p>\n<p>{% if instructions %}<br />\nInstructions: {{ instructions|raw }} <br />\n{% endif %}</p>\n<p>{% if Appointment.web_meeting_url %}<br />\nAt your appointment time, join the meeting using this link: {{ Appointment.web_meeting_url }}{% endif %}</p>\n<p>Type: {{ Appointment.AppointmentType.title|raw }} </p>\n<p>Your details: <br />\n{{ Appointment.customer_information_summary }}</p>\n<p>If you need to cancel or change your appointment, you can do so by visiting this link: <br />\n{{ Appointment.public_edit_url }}</p>\n",
+          "title": "Email (Customer)",
+          "trigger": "appointment_booked",
+          "type": "email",
+          "when": "after",
+          "duration": 0
+        },
+        {
+          "appointment_types": [],
+          "id": 1643418908,
+          "schema": "2019-04-02",
+          "sent_to": [
+            "{{admin_email}}"
+          ],
+          "title": "Email (Admin)",
+          "subject": "{{ Appointment.customer_information.Name }} just canceled an appointment",
+          "message": "<p>Your appointment \"{{ Appointment.AppointmentType.title|raw }}\" with {{ Appointment.customer_information.Name }} has been canceled </p>\n<p>*** Canceled *** <br />\nAppointment Details: <br />\n{{ Appointment.start_date | date(\"F d, Y g:ia (T)\", Appointment.date_timezone) }} </p>\n<p>Type: {{ Appointment.AppointmentType.title|raw }} </p>\n<p>Customer details: <br />\n{{ Appointment.customer_information_summary }}</p>\n",
+          "trigger": "appointment_canceled",
+          "type": "email",
+          "when": "after",
+          "duration": 0
+        },
+        {
+          "appointment_types": [],
+          "id": 1643418909,
+          "schema": "2019-04-02",
+          "sent_to": [
+            "{{customer_email}}"
+          ],
+          "subject": "Your appointment has been canceled",
+          "message": "<p>Hi {{ Appointment.customer_information.Name }},<br />\nYour appointment \"{{ Appointment.AppointmentType.title|raw }}\" (booked on {{ Global.home_url }}) has been canceled</p>\n",
+          "title": "Email (Customer)",
+          "trigger": "appointment_canceled",
+          "type": "email",
+          "when": "after",
+          "duration": 0
+        }
+      ],
+      "schema_version": "2018-09-18 18:30",
+      "last_updated": "2022-01-29 01:15:06"
+    },
+    "calendar_events": {
+      "enabled": false,
+      "event_type_customer": {
+        "title": "{{Appointment.AppointmentType.title}} ({{Global.company_name}})",
+        "location": "{{location}}",
+        "details": "<p>{% if Appointment.web_meeting_url %}<br />\nThis event has a web meeting:{{Appointment.web_meeting_url}}<br />\n{% endif %}</p>\n<p>{% if instructions %}<br />\nInstructions: {{ instructions|raw }} <br />\n{% endif %}</p>\n<p>{% if Appointment.AppointmentType.description %}<br />\n{{ Appointment.AppointmentType.description }}<br />\n{% endif %}</p>\n<p>Need to make changes to this event? <br />\n{{Appointment.public_edit_url}}</p>\n"
+      },
+      "event_type_individual_shared": {
+        "title": "{{customer_name}} + {{Global.company_name}}: {{Appointment.AppointmentType.title}}",
+        "location": "{{location}}",
+        "details": "<p>{% if Appointment.web_meeting_url %}<br />\nThis event has a web meeting:{{Appointment.web_meeting_url}}<br />\n{% endif %}</p>\n<p>Your details: <br />\n{{ Appointment.customer_information_summary }}</p>\n<p>Need to make changes to this event? <br />\n{{Appointment.public_edit_url}}</p>\n"
+      },
+      "event_type_group_shared": {
+        "title": "{{Appointment.AppointmentType.title}} ({{Global.company_name}})",
+        "location": "{{location}}",
+        "details": "<p>{% if Appointment.web_meeting_url %}<br />\nThis event has a web meeting:{{Appointment.web_meeting_url}}<br />\n{% endif %}</p>\n<p>Attendees:{{ attendees_list }}</p>\n<p>Need to make changes to this event? <br />\n{{Appointment.public_edit_url}}</p>\n"
+      },
+      "event_type_individual_admin": {
+        "title": "{{customer_name}} - {{Appointment.AppointmentType.title}}",
+        "location": "{{location}}",
+        "details": "<p>{% if Appointment.web_meeting_url %}<br />\nThis event has a web meeting:{{Appointment.web_meeting_url}}<br />\n{% endif %}</p>\n<p>Customer details: <br />\n{{ Appointment.customer_information_summary }}</p>\n<p>Need to make changes to this event? <br />\n{{Appointment.public_edit_url}}</p>\n"
+      },
+      "event_type_group_admin": {
+        "title": "{{Appointment.AppointmentType.title}}",
+        "location": "{{location}}",
+        "details": "<p>{% if Appointment.web_meeting_url %}<br />\nThis event has a web meeting:{{Appointment.web_meeting_url}}<br />\n{% endif %}</p>\n<p>Attendees:{{ attendees_list }}</p>\n<p>Need to make changes to this event? <br />\n{{Appointment.public_edit_url}}</p>\n"
+      },
+      "schema_version": "2021-09-23 17:50"
+    },
+    "developer": {
+      "enabled": true,
+      "enqueue_everywhere": false,
+      "separate_appointment_type_availability": false,
+      "beta_updates": false,
+      "beta_calendar_events": false,
+      "capacity_availability": false,
+      "cache_availability": false,
+      "disable_availability_caching": false,
+      "object_cache": false,
+      "debug_mode": false,
+      "ssa_debug_mode": false,
+      "display_capacity_available": false,
+      "schema_version": "2022-01-12"
+    },
+    "license": {
+      "enabled": false,
+      "license": "9669c76440f4eb67ea0ace4596f80583",
+      "license_status": "valid",
+      "license_status_message": "",
+      "license_status_last_updated": "2022-02-28 18:34:58",
+      "schema_version": "2018-01-11",
+      "last_updated": "2022-02-28 18:34:58"
+    },
+    "advanced_scheduling": {
+      "enabled": false,
+      "schema_version": "2018-09-04"
+    },
+    "blackout_dates": {
+      "enabled": false,
+      "dates": [],
+      "schema_version": "2018-02-20"
+    },
+    "staff": {
+      "enabled": true,
+      "schema_version": "2019-12-26.2",
+      "last_updated": "2022-02-28 18:48:42"
+    },
+    "google_calendar": {
+      "enabled": true,
+      "client_id": "121390547841-fg2kma0lbiqs4g0icm3ckoqrs69193kp.apps.googleusercontent.com",
+      "client_secret": "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",
+      "access_token": {
+        "access_token": "ya29.a0ARrdaM-Ypw4mEWUk8-ekP-DHHEHpfhgdKfdJrICUKcOfrUEUaCOnJzzVHOlmhrE1ElmCl21w35LqlAjck7yIDPcKElcjcA2Ch9So6IfeGNQ0T14dhLwiB_xZviTGFHFBMqYIxmpiBf2kgPKe0sM9BM21kiU-",
+        "expires_in": 3599,
+        "refresh_token": "1//04cgVMsxCSoO8CgYIARAAGAQSNwF-L9IrLfXO-aDZohOZ7G0GUfS-_0AGV4QNG6HH8LJGOIpg-NCZA95o-3SHPia75NL9yg8EV5I",
+        "scope": "https://www.googleapis.com/auth/calendar",
+        "token_type": "Bearer",
+        "created": 1653340988
+      },
+      "web_meetings": true,
+      "delete_canceled_events": true,
+      "refresh_interval": "5",
+      "query_limit": 500,
+      "schema_version": "2021-09-28",
+      "last_updated": "2022-05-24 15:46:41"
+    },
+    "mailchimp": {
+      "enabled": true,
+      "api_key": "c8638adc1161fb165e7ba7bd1d12404e-us17",
+      "account_details": {
+        "account_id": "2060751a5648e1bf4ea9093d9",
+        "login_id": "152711761",
+        "account_name": "FoxySocks",
+        "email": "ssa.simplyfoxy@gmail.com",
+        "first_name": "Foxy",
+        "last_name": "Simply",
+        "username": "simplyfoxy",
+        "avatar_url": "https://mcusercontent.com/2060751a5648e1bf4ea9093d9/avatar/b77ef41d-8788-4b1d-903f-a69d5d875422.png",
+        "role": "owner",
+        "member_since": "2020-07-23T14:34:51+00:00",
+        "pricing_plan_type": "forever_free",
+        "first_payment": "",
+        "account_timezone": "America/New_York",
+        "account_industry": "",
+        "contact": {
+          "company": "FoxySocks",
+          "addr1": "1400 Rivery Blvd Apt 1102",
+          "addr2": "",
+          "city": "Georgetown",
+          "state": "TX",
+          "zip": "78628-3024",
+          "country": "US"
+        },
+        "pro_enabled": false,
+        "last_login": "2022-05-24T15:51:39+00:00",
+        "total_subscribers": 1
+      },
+      "lists": [
+        {
+          "id": "febc662314",
+          "web_id": 211090,
+          "name": "FoxySocks",
+          "use_archive_bar": true,
+          "campaign_defaults": {
+            "from_name": "Foxy",
+            "from_email": "ssa.simplyfoxy@gmail.com",
+            "subject": "",
+            "language": "en"
+          },
+          "notify_on_subscribe": "",
+          "notify_on_unsubscribe": "",
+          "date_created": "2020-07-23T14:36:41+00:00",
+          "list_rating": 0,
+          "email_type_option": false,
+          "subscribe_url_short": "http://eepurl.com/g-7Qsb",
+          "subscribe_url_long": "https://gmail.us17.list-manage.com/subscribe?u=2060751a5648e1bf4ea9093d9&id=febc662314",
+          "visibility": "prv",
+          "double_optin": false,
+          "has_welcome": true,
+          "marketing_permissions": false,
+          "modules": [],
+          "merge_fields": [
+            {
+              "merge_id": 3,
+              "tag": "ADDRESS",
+              "name": "Address",
+              "type": "address",
+              "required": false,
+              "default_value": "",
+              "public": false,
+              "display_order": 4,
+              "options": {
+                "default_country": 164
+              },
+              "help_text": "",
+              "list_id": "febc662314"
+            },
+            {
+              "merge_id": 5,
+              "tag": "BIRTHDAY",
+              "name": "Birthday",
+              "type": "birthday",
+              "required": false,
+              "default_value": "",
+              "public": true,
+              "display_order": 6,
+              "options": {
+                "date_format": "MM/DD"
+              },
+              "help_text": "",
+              "list_id": "febc662314"
+            },
+            {
+              "merge_id": 1,
+              "tag": "FNAME",
+              "name": "First Name",
+              "type": "text",
+              "required": false,
+              "default_value": "",
+              "public": true,
+              "display_order": 2,
+              "options": {
+                "size": 25
+              },
+              "help_text": "",
+              "list_id": "febc662314"
+            },
+            {
+              "merge_id": 2,
+              "tag": "LNAME",
+              "name": "Last Name",
+              "type": "text",
+              "required": false,
+              "default_value": "",
+              "public": true,
+              "display_order": 3,
+              "options": {
+                "size": 25
+              },
+              "help_text": "",
+              "list_id": "febc662314"
+            },
+            {
+              "merge_id": 4,
+              "tag": "PHONE",
+              "name": "Phone Number",
+              "type": "phone",
+              "required": false,
+              "default_value": "",
+              "public": false,
+              "display_order": 5,
+              "options": [],
+              "help_text": "",
+              "list_id": "febc662314"
+            }
+          ]
+        }
+      ],
+      "schema_version": "2018-06-21",
+      "last_updated": "2022-05-24 15:52:40"
+    },
+    "offline_payments": {
+      "enabled": false,
+      "title": "Pay in person",
+      "description": "You are agreeing to pay this amount in person.",
+      "schema_version": "2018-10-23"
+    },
+    "payments": {
+      "enabled": true,
+      "default_currency": "USD",
+      "schema_version": "2018-10-23",
+      "last_updated": "2022-05-09 21:03:45"
+    },
+    "paypal": {
+      "enabled": false,
+      "title": "PayPal",
+      "description": "Pay via PayPal; you can pay with your credit card if you don't have a PayPal account.",
+      "email": "ssa.simplyfoxy@gmail.com",
+      "sandbox_enabled": false,
+      "identity_token": "",
+      "schema_version": "2018-10-23",
+      "last_updated": "2022-05-24 15:50:59",
+      "ipn_url": "https://foxy-accounts.sandbox.ssa.rocks/index.php?ssa-listener=paypal"
+    },
+    "sms": {
+      "enabled": false,
+      "twilio_test_mode_enabled": false,
+      "twilio_account_sid": "",
+      "twilio_auth_token": "",
+      "twilio_test_account_sid": "",
+      "twilio_test_auth_token": "",
+      "twilio_send_from_phone": "",
+      "authorized_date": "",
+      "schema_version": "2019-06-28"
+    },
+    "stripe": {
+      "enabled": true,
+      "title": "Credit card",
+      "description": "Pay with Credit Card",
+      "statement_descriptor": "",
+      "publishable_key": "pk_live_51HB4QqKKAvYaVLzR0xUX3NV5obr574ZK23QbJpeHnt7vAMBXAYdYyVztIwAHXkz7h5zMgeJICM7oI1rebFWUVs5S003D7Rrb80",
+      "secret_key": "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",
+      "test_mode_enabled": false,
+      "test_publishable_key": "",
+      "test_secret_key": "",
+      "schema_version": "2019-07-16",
+      "last_updated": "2022-05-09 21:07:11",
+      "webhook": "https://foxy-accounts.sandbox.ssa.rocks/index.php?ssa-listener=stripe"
+    },
+    "styles": {
+      "enabled": true,
+      "font": "Roboto",
+      "accent_color": "rgba(139, 195, 74, 1)",
+      "background": "rgba(255, 255, 255, 1)",
+      "padding": "1rem",
+      "contrast": false,
+      "css": "",
+      "schema_version": "2018-10-23"
+    },
+    "tracking": {
+      "enabled": false,
+      "page_tracking": true,
+      "event_tracking": true,
+      "schema_version": "2019-07-19"
+    },
+    "translation": {
+      "enabled": true,
+      "locales": [],
+      "schema_version": "2019-10-15"
+    },
+    "webhooks": {
+      "enabled": true,
+      "webhooks": [
+        {
+          "token": "f23fb580c705fdf59de2efc1",
+          "triggers": [
+            "appointment_booked",
+            "appointment_canceled",
+            "appointment_edited"
+          ],
+          "urls": [
+            "https://hooks.zapier.com/hooks/catch/8313668/b5uk6jl/"
+          ],
+          "appointment_types": [],
+          "schema": "2018-09-20",
+          "title": "Send SSA #foxy-webhooks Slack a Message"
+        }
+      ],
+      "schema_version": "2018-09-18 18:30",
+      "last_updated": "2022-05-24 16:57:44"
+    },
+    "zoom": {
+      "enabled": true,
+      "auth_code": "Qlokjl6Hen_J4iqZyZoRi-XFyQ0Vbe2xg",
+      "access_token": "{\"access_token\":\"eyJhbGciOiJIUzUxMiIsInYiOiIyLjAiLCJraWQiOiIyZGQ4MmRmNS02YjM4LTRlNzItODVmZi05ZDM3YzJhMGFkMGUifQ.eyJ2ZXIiOjcsImF1aWQiOiIwNmNiODhjOWEyOTRhYmI2MTQ3YmNhZWQwMmM5ZGEwMiIsImNvZGUiOiJRbG9ramw2SGVuX0o0aXFaeVpvUmktWEZ5UTBWYmUyeGciLCJpc3MiOiJ6bTpjaWQ6SE9sOFJyWXdRNGlESndCNTE2U1RnIiwiZ25vIjowLCJ0eXBlIjowLCJ0aWQiOjEsImF1ZCI6Imh0dHBzOi8vb2F1dGguem9vbS51cyIsInVpZCI6Iko0aXFaeVpvUmktWEZ5UTBWYmUyeGciLCJuYmYiOjE2NTM0MDcyMDQsImV4cCI6MTY1MzQxMDgwNCwiaWF0IjoxNjUzNDA3MjA0LCJhaWQiOiJVb1NaWE5RLVRSeV9jQ0dQeVcxb0dRIiwianRpIjoiMDdmOGExMzctZmZmZi00ZDZhLThmNjUtMDQ1NTFiMWQ3MGY1In0.noGD16B7BVMtCQjps2Or0KqRZxL3-tDxkBxb3imd87yiTxThmJOaq317Pe2d0JPwZnYAR0_wwSBng8PjsoWf9w\",\"token_type\":\"bearer\",\"refresh_token\":\"eyJhbGciOiJIUzUxMiIsInYiOiIyLjAiLCJraWQiOiI5ODVmYmI3Ny1kMWY5LTRjYzctYjMyMi1kNzNiMGQ5YTQwZGUifQ.eyJ2ZXIiOjcsImF1aWQiOiIwNmNiODhjOWEyOTRhYmI2MTQ3YmNhZWQwMmM5ZGEwMiIsImNvZGUiOiJRbG9ramw2SGVuX0o0aXFaeVpvUmktWEZ5UTBWYmUyeGciLCJpc3MiOiJ6bTpjaWQ6SE9sOFJyWXdRNGlESndCNTE2U1RnIiwiZ25vIjowLCJ0eXBlIjoxLCJ0aWQiOjEsImF1ZCI6Imh0dHBzOi8vb2F1dGguem9vbS51cyIsInVpZCI6Iko0aXFaeVpvUmktWEZ5UTBWYmUyeGciLCJuYmYiOjE2NTM0MDcyMDQsImV4cCI6MjEyNjQ0NzIwNCwiaWF0IjoxNjUzNDA3MjA0LCJhaWQiOiJVb1NaWE5RLVRSeV9jQ0dQeVcxb0dRIiwianRpIjoiODI4YTYxZjAtZWYyOS00ZDFkLWJkNGUtNTFlZTdiZTFmMjUwIn0.wZBf3_sOdiPSIZ3utxbB5dauAzNRNVbF90OR96xvoTVXS_pIoLyiv9pjVlrxVRDqmoaUxOMAzAJAFqW0_ZX1sg\",\"expires_in\":3599,\"scope\":\"meeting:write user:read\"}",
+      "access_token_expires": "2022-05-24 16:46:43",
+      "schema_version": "2021-06-17",
+      "last_updated": "2022-05-24 15:46:44"
+    },
+    "webex": {
+      "enabled": true,
+      "auth_code": "MTFjNGQ1MTctZDZiOC00Nzg4LWFlYjktZmY0MGY5MzRkNmVjMmMxNGIwZjctN2U0_P0A1_19067333-4f7c-41dd-b259-806a3e94f2ac",
+      "access_token": "{\"access_token\":\"Yzg4YjhmY2YtMDJkMi00OTc5LTgxMGQtZGQ5ZmIzMzYwZTAzNGVjY2YyYjQtNzRk_P0A1_19067333-4f7c-41dd-b259-806a3e94f2ac\",\"expires_in\":1209599,\"refresh_token\":\"MzJjYzA1YjctNTEwNy00YTgwLWI4NDQtYmZmZWJiMTMwYmJmNDM2NzIzY2ItOWVi_P0A1_19067333-4f7c-41dd-b259-806a3e94f2ac\",\"refresh_token_expires_in\":6232955,\"token_type\":\"Bearer\"}",
+      "access_token_expires": "2022-06-07 15:51:16",
+      "schema_version": "2022-03-17",
+      "last_updated": "2022-05-24 15:51:17"
+    },
+    "last_updated": "2022-05-24 15:45:43"
+  },
+  "staff": [
+    {
+      "id": "1",
+      "user_id": "0",
+      "capacity": "0",
+      "name": "Team 1",
+      "display_name": "Team 1",
+      "email": "team1@email.com",
+      "phone": "",
+      "manages_google": "1",
+      "google": "",
+      "google_access_token": "",
+      "zoom": "",
+      "status": "publish",
+      "visibility": "public",
+      "manages_blackout_dates": "0",
+      "blackout_dates": {
+        "dates": []
+      },
+      "manages_working_hours": "0",
+      "custom_working_hours": "0",
+      "timezone": "",
+      "working_hours": {
+        "Monday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "web_meetings_url": "",
+      "display_order": "1"
+    },
+    {
+      "id": "2",
+      "user_id": "0",
+      "capacity": "0",
+      "name": "Team 2",
+      "display_name": "Team 2",
+      "email": "team2@email.com",
+      "phone": "",
+      "manages_google": "1",
+      "google": "",
+      "google_access_token": "",
+      "zoom": "",
+      "status": "publish",
+      "visibility": "public",
+      "manages_blackout_dates": "0",
+      "blackout_dates": {
+        "dates": []
+      },
+      "manages_working_hours": "0",
+      "custom_working_hours": "0",
+      "timezone": "",
+      "working_hours": {
+        "Monday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "web_meetings_url": "",
+      "display_order": "1"
+    },
+    {
+      "id": "3",
+      "user_id": "0",
+      "capacity": "0",
+      "name": "Team 3",
+      "display_name": "Team 3",
+      "email": "team3@email.com",
+      "phone": "",
+      "manages_google": "1",
+      "google": "",
+      "google_access_token": "",
+      "zoom": "",
+      "status": "publish",
+      "visibility": "public",
+      "manages_blackout_dates": "0",
+      "blackout_dates": {
+        "dates": []
+      },
+      "manages_working_hours": "0",
+      "custom_working_hours": "0",
+      "timezone": "",
+      "working_hours": {
+        "Monday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "web_meetings_url": "",
+      "display_order": "1"
+    }
+  ],
+  "appointment_types": [
+    {
+      "id": "1",
+      "author_id": "1",
+      "title": "SSA Appointment Type Test",
+      "slug": "ssa-appointment-type-test",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "light-green",
+      "capacity": "1",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "30",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": 525600,
+      "max_event_count": "0",
+      "booking_start_date": "",
+      "booking_end_date": "",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "face",
+          "values": ""
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "email",
+          "values": ""
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": {
+        "provider": "",
+        "url": ""
+      },
+      "mailchimp": "",
+      "status": "publish",
+      "visibility": "public",
+      "display_order": "1",
+      "date_created": "2022-02-28 18:48:02",
+      "date_modified": "2022-02-28 18:48:02"
+    },
+    {
+      "id": "2",
+      "author_id": "1",
+      "title": "Team Any Test",
+      "slug": "team",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "light-green",
+      "capacity": "100000",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "30",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": 525600,
+      "max_event_count": "0",
+      "booking_start_date": "",
+      "booking_end_date": "",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Saturday": [
+          {
+            "time_start": "10:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "face",
+          "values": ""
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "email",
+          "values": ""
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "any",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": {
+        "provider": "",
+        "url": ""
+      },
+      "mailchimp": "",
+      "status": "publish",
+      "visibility": "public",
+      "display_order": "2",
+      "date_created": "2022-02-28 18:48:19",
+      "date_modified": "2022-02-28 18:48:19"
+    },
+    {
+      "id": "3",
+      "author_id": "1",
+      "title": "Team All Test",
+      "slug": "team-all",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "light-green",
+      "capacity": "100000",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "30",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": 525600,
+      "max_event_count": "0",
+      "booking_start_date": "",
+      "booking_end_date": "",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Saturday": [
+          {
+            "time_start": "10:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "face",
+          "values": ""
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "email",
+          "values": ""
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "all",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": {
+        "provider": "",
+        "url": ""
+      },
+      "mailchimp": "",
+      "status": "publish",
+      "visibility": "public",
+      "display_order": "3",
+      "date_created": "2022-02-28 18:49:57",
+      "date_modified": "2022-02-28 18:49:57"
+    },
+    {
+      "id": "4",
+      "author_id": "1",
+      "title": "Team 1 Test",
+      "slug": "team1",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "light-green",
+      "capacity": "100000",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "30",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": 525600,
+      "max_event_count": "0",
+      "booking_start_date": "",
+      "booking_end_date": "",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Saturday": [
+          {
+            "time_start": "10:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "face",
+          "values": ""
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "email",
+          "values": ""
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "any",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": {
+        "provider": "",
+        "url": ""
+      },
+      "mailchimp": "",
+      "status": "publish",
+      "visibility": "public",
+      "display_order": "4",
+      "date_created": "2022-02-28 18:50:34",
+      "date_modified": "2022-02-28 18:50:34"
+    },
+    {
+      "id": "5",
+      "author_id": "1",
+      "title": "Team 2 Test",
+      "slug": "team2",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "light-green",
+      "capacity": "100000",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "30",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": 525600,
+      "max_event_count": "0",
+      "booking_start_date": "",
+      "booking_end_date": "",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Saturday": [
+          {
+            "time_start": "10:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "face",
+          "values": ""
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "email",
+          "values": ""
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "any",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": {
+        "provider": "",
+        "url": ""
+      },
+      "mailchimp": "",
+      "status": "publish",
+      "visibility": "public",
+      "display_order": "5",
+      "date_created": "2022-02-28 18:50:42",
+      "date_modified": "2022-02-28 18:50:42"
+    },
+    {
+      "id": "6",
+      "author_id": "1",
+      "title": "Team 3 Test",
+      "slug": "team3",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "light-green",
+      "capacity": "100000",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "30",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": 525600,
+      "max_event_count": "0",
+      "booking_start_date": "",
+      "booking_end_date": "",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "08:00:00",
+            "time_end": "18:00:00"
+          }
+        ],
+        "Saturday": [
+          {
+            "time_start": "10:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "face",
+          "values": ""
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "email",
+          "values": ""
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": "",
+      "staff": {
+        "required": "any",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [],
+      "google_calendar_booking": "",
+      "shared_calendar_event": "1",
+      "web_meetings": {
+        "provider": "",
+        "url": ""
+      },
+      "mailchimp": "",
+      "status": "publish",
+      "visibility": "public",
+      "display_order": "6",
+      "date_created": "2022-02-28 18:50:48",
+      "date_modified": "2022-02-28 18:50:48"
+    },
+    {
+      "id": "7",
+      "author_id": "1",
+      "title": "All Accounts Connected",
+      "slug": "all-accounts-connected",
+      "location": "",
+      "description": "",
+      "instructions": "",
+      "label": "light-green",
+      "capacity": "1",
+      "staff_capacity": "1",
+      "capacity_type": "individual",
+      "has_max_capacity": "0",
+      "buffer_before": "0",
+      "duration": "30",
+      "buffer_after": "0",
+      "min_booking_notice": "1440",
+      "max_booking_notice": 525600,
+      "max_event_count": "0",
+      "booking_start_date": "",
+      "booking_end_date": "",
+      "availability_type": "available_blocks",
+      "availability": {
+        "Monday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Tuesday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Wednesday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Thursday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Friday": [
+          {
+            "time_start": "09:00:00",
+            "time_end": "12:00:00"
+          },
+          {
+            "time_start": "13:00:00",
+            "time_end": "17:00:00"
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      },
+      "availability_start_date": null,
+      "availability_end_date": null,
+      "availability_increment": "30",
+      "timezone_style": "localized",
+      "booking_layout": "week",
+      "customer_information": [],
+      "custom_customer_information": [
+        {
+          "field": "Name",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "face",
+          "values": ""
+        },
+        {
+          "field": "Email",
+          "display": true,
+          "required": true,
+          "type": "single-text",
+          "icon": "email",
+          "values": ""
+        }
+      ],
+      "notifications": [
+        {
+          "field": "admin",
+          "send": true
+        },
+        {
+          "field": "customer",
+          "send": true
+        }
+      ],
+      "payments": {
+        "payment_methods": [
+          "stripe"
+        ],
+        "currency": "USD",
+        "payment_required": "optional",
+        "price": "1.00"
+      },
+      "staff": {
+        "required": "",
+        "assignment": "random"
+      },
+      "google_calendars_availability": [
+        "ssa.simplyfoxy@gmail.com"
+      ],
+      "google_calendar_booking": "ssa.simplyfoxy@gmail.com",
+      "shared_calendar_event": "1",
+      "web_meetings": {
+        "provider": "zoom",
+        "url": ""
+      },
+      "mailchimp": {
+        "optin_text": "Sign up for my Foxy Socks newsletter",
+        "optin_list": "febc662314"
+      },
+      "status": "publish",
+      "visibility": "public",
+      "display_order": "7",
+      "date_created": "2022-05-24 16:02:19",
+      "date_modified": "2022-05-24 16:02:19"
+    }
+  ],
+  "staff_appointment_types": [
+    {
+      "id": "1",
+      "staff_id": "1",
+      "appointment_type_id": "2"
+    },
+    {
+      "id": "2",
+      "staff_id": "2",
+      "appointment_type_id": "2"
+    },
+    {
+      "id": "3",
+      "staff_id": "3",
+      "appointment_type_id": "2"
+    },
+    {
+      "id": "4",
+      "staff_id": "1",
+      "appointment_type_id": "3"
+    },
+    {
+      "id": "5",
+      "staff_id": "2",
+      "appointment_type_id": "3"
+    },
+    {
+      "id": "6",
+      "staff_id": "3",
+      "appointment_type_id": "3"
+    },
+    {
+      "id": "7",
+      "staff_id": "1",
+      "appointment_type_id": "4"
+    },
+    {
+      "id": "8",
+      "staff_id": "2",
+      "appointment_type_id": "5"
+    },
+    {
+      "id": "9",
+      "staff_id": "3",
+      "appointment_type_id": "6"
+    }
+  ],
+  "appointments": [],
+  "appointment_meta": [],
+  "staff_appointments": []
+}
